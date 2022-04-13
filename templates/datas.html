@@ -1,0 +1,44 @@
+{%extends 'base.html'%}{%block title%}All data{%endblock%} {%block content%}
+
+<h3 align="center" style="margin-top: 20px">
+    All of the data about the refuels from the database
+</h3>
+<hr />
+<div class="grid form-group" align="center">
+    <select
+        id="filter"
+        name="filter"
+        class="g-col-6"
+        aria-label=".form-select-sm example"
+    >
+        <option selected>None</option>
+        <option value="id">ID</option>
+        <option value="license_plate">License Plate</option>
+        <option value="amount">Amount</option>
+        <option value="date">Date</option>
+        <option value="user_name">Driver Name</option>
+    </select>
+    <button type="submit" class="btn btn-info btn-sm">Filter data</button>
+</div>
+</br>
+<table class="table table-hover table-bordered">
+    <thead>
+        <th>#</th>
+        <th>License Plate</th>
+        <th>Refuel amount</th>
+        <th>Date</th>
+        <th>Driver #</th>
+    </thead>
+    <tbody>
+        {%for data in datas%}
+        <tr>
+            <td>{{data.id}}</td>
+            <td>{{data.license_plate}}</td>
+            <td>{{data.amount}} liter</td>
+            <td>{{data.date}}</td>
+            <td>{{data.user_name}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{%endblock%}

@@ -1,0 +1,57 @@
+{% extends "base.html"%} {% block title %}Add User{%endblock%} {%block content%}
+
+<form method="POST">
+    <h3 align="center" style="margin-top: 20px">Enter data</h3>
+    <div class="form-group">
+        <label for="admin">Admin?</label>
+        <!---<input
+            id="plate"
+            type="text"
+            name="plate"
+            class="form-control"
+            placeholder="License plate"
+        /> -->
+        <select
+            id="is_admin"
+            name="is_admin"
+            class="form-select form-select-sm"
+            aria-label=".form-select-sm example"
+        >
+            <option selected value="False">No</option>
+            <option value="True">Yes</option>
+        </select>
+        <label for="full_name">Full Name</label>
+        <input
+            id="full_name"
+            name="full_name"
+            class="form-control"
+            placeholder="Enter the full name of the user"
+        />
+        <label for="username">Username</label>
+        <input
+            id="username"
+            name="username"
+            class="form-control"
+            placeholder="Enter the username"
+        />
+        <label for="email">Email</label>
+        <input
+            id="email"
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter email"
+        />
+        <label for="password">Enter password</label>
+        <input
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter the password for the user"
+        />
+        <br />
+        <button type="submit" class="btn btn-primary btn-lg">Send data</button>
+    </div>
+</form>
+
+{%endblock%}
