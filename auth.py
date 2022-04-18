@@ -12,8 +12,8 @@ def login():
         password = request.form.get("password")
         user = User.query.filter_by(uname=username).first()
         if user:
-            hashed_pw = generate_password_hash(user.password)
-            if check_password_hash(hashed_pw, password):
+            #hashed_pw = generate_password_hash(user.password)
+            if check_password_hash(user.password, password):
                 flash("Login was successful", category='success')
                 login_user(user)
                 return redirect(url_for('views.home'))

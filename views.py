@@ -3,6 +3,7 @@ from flask_login import login_required, login_user, logout_user, current_user
 from sqlalchemy.sql import expression
 from models import StatData,User,Car, db
 from datetime import datetime, date
+from werkzeug.security import check_password_hash, generate_password_hash
 
 views = Blueprint("views", __name__,)
 
@@ -54,7 +55,7 @@ def add_user():
         admin_rights = request.form.get("is_admin")
         full_name = request.form.get("full_name").title()
         username = request.form.get("username").lower()
-        password = request.form.get("password")
+        password = generate_password_hash(request.form.get("password"), salt_length=16)
         email = request.form.get("email")
         
         if admin_rights == 'True':
@@ -64,7 +65,6 @@ def add_user():
         db.session.add(new_user)
         db.session.commit()
         flash("New user created!", category="success")
-        print(new_user)
     return render_template("add_user.html", user = current_user)
 
 
